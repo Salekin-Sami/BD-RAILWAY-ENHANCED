@@ -1,0 +1,357 @@
+body {
+  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #c65c5c;
+}
+
+.app-container {
+  max-width: 480px;
+  margin: 2.5rem auto;
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px #0002;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #222b45;
+  letter-spacing: -0.5px;
+}
+
+.coach-select-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.08rem;
+}
+
+.coach-select-row label {
+  font-weight: 500;
+  color: #3b4252;
+}
+
+select {
+  padding: 0.45rem 1.2rem 0.45rem 0.7rem;
+  border-radius: 0.7rem;
+  border: 1.5px solid #cbd5e1;
+  font-size: 1.08rem;
+  background: #f8fafc;
+  color: #222b45;
+  font-weight: 500;
+  outline: none;
+  transition: border 0.2s;
+}
+
+select:focus {
+  border: 1.5px solid #007bff;
+}
+
+.toggle-btn {
+  margin: 0.5rem 0 1.2rem 0;
+  padding: 0.6rem 1.5rem;
+  font-size: 1.08rem;
+  border-radius: 1.2rem;
+  border: none;
+  background: linear-gradient(90deg, #007bff 60%, #00c6fb 100%);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #007bff22;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.toggle-btn:hover,
+.toggle-btn:focus {
+  background: linear-gradient(90deg, #0056b3 60%, #009ec3 100%);
+  box-shadow: 0 4px 16px #007bff33;
+}
+
+.seat-layout {
+  width: 100%;
+  background: #f8fafc;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #0001;
+  padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.seat-gap {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: inline-block;
+}
+
+.seat {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.6rem;
+  border: 2px solid #cbd5e1;
+  font-size: clamp(0.3rem, 0.8vw, 0.8rem);
+  font-weight: 600;
+  background: #fff;
+  color: #222b45;
+  cursor: pointer;
+  transition: box-shadow 0.18s, border 0.18s, background 0.18s;
+  box-shadow: 0 1px 3px #0001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  position: relative;
+}
+
+.seat-green {
+  background: linear-gradient(120deg, #2ecc40 60%, #27ae60 100%);
+  color: #fff;
+  border-color: #27ae60;
+}
+
+.seat-yellow {
+  background: linear-gradient(120deg, #ffe066 60%, #ffdc00 100%);
+  color: #222b45;
+  border-color: #f1c40f;
+}
+
+.seat:active,
+.seat:focus {
+  outline: 2px solid #007bff;
+  box-shadow: 0 0 0 2px #007bff33;
+  z-index: 2;
+}
+
+.seat:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px #007bff22;
+}
+
+/* Popup for seat info */
+.seat-info-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0006;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.seat-info-content {
+  background: #fff;
+  padding: 1.5rem 2.2rem;
+  border-radius: 1.2rem;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 24px #007bff22;
+  text-align: center;
+  color: #222b45;
+  font-weight: 500;
+}
+
+.legend {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.05rem;
+}
+
+.legend-item {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 0.3rem;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+  border: 2px solid #cbd5e1;
+}
+
+.legend-item.green {
+  background: #2ecc40;
+  border-color: #27ae60;
+}
+
+.legend-item.yellow {
+  background: #ffdc00;
+  border-color: #f1c40f;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 0.5rem;
+    max-width: 99vw;
+  }
+
+  .seat-layout {
+    padding: 0.7rem 0.1rem 0.7rem 0.1rem;
+  }
+
+  .seat {
+    width: 1.7rem;
+    height: 1.7rem;
+    font-size: 0.98rem;
+  }
+
+  .seat-gap {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .seat-info-content {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Add responsive styles for mobile devices */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  .app-header h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .coach-select-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .coach-select-label {
+    margin-bottom: 0.5rem;
+  }
+
+  .coach-select-dropdown {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .toggle-btn {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 1rem;
+  }
+
+  .seat-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .seat {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.8rem;
+  }
+
+  .seat-gap {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .seat-info-popup {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+  }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .layout-note {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+}
